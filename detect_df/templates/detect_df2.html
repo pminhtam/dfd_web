@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+	Home | Facebook tagged image Crawler
+{% endblock title %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<main class="main_full">
+	<div class="container">
+		<div class="panel">
+			<div class="button_outer">
+				<div class="btn_upload">
+					<input type="file" id="upload_file" name="">
+					Upload Image
+				</div>
+				<div class="processing_bar"></div>
+				<div class="success_box"></div>
+			</div>
+		</div>
+		<div class="error_msg"></div>
+		<div class="uploaded_file_view" id="uploaded_view">
+			<span class="file_remove">X</span>
+		</div>
+        <div  id="result_file">
+
+		</div>
+	</div>
+</main>
+{% endblock %}

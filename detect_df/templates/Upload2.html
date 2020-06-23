@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div style="padding: 50px;">
+    <!-- Logo  -->
+    <img class="ui centered large image" src="{% static '/images/logo.png' %}">
+{#    <!-- Upload URL  -->#}
+{#    <div style="text-align: center;">#}
+{#        <form class="ui form fields" method="POST" id="container_url_upload_form" action="/upload">#}
+{#            <div style="width: 100%;">#}
+{#                <h4>Enter URL</h4>#}
+{#                <div class="ui icon input field">#}
+{#                    <input class="prompt" type="url" placeholder="URL" name="youtube_link">#}
+{#                    <button class="ui yellow button upload btn btn_disabled right labeled icon" type="submit"#}
+{#                            value="Upload" id="upload_button2">#}
+{#                        Check#}
+{#                        <i class="ui user secret icon"></i>#}
+{#                    </button>#}
+{#                </div>#}
+{#                <div class="results"></div>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#    <br>#}
+    <!-- Upload MP4  -->
+    <div style="text-align: center;">
+        <form class="ui form fields" id="container_image_upload_form"  method="POST"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="width: 100%;">
+                <h4>Upload Image</h4>
+                <div class="ui">
+                    <div style="width: 20%;" class="ui icon input field">
+                        <input class="prompt" name="image" type="file" id="id_image">
+                        <button class="ui orange button upload btn btn_disabled right labeled icon" type="submit"
+                                value="Upload" id="upload_button">
+                            Upload
+                            <i class="ui upload icon"></i>
+                        </button>
+                    </div>
+{#                    <div class="results">#}
+{#                            <img src="{{image}}" style="height: 500px"/>#}
+{#                            <br>#}
+{#                            <h4>{{ result }}</h4>#}
+{#                    </div>#}
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!-- Dialog  -->
+
+
+{% endblock %}
+
+

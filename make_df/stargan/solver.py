@@ -202,6 +202,8 @@ class Solver(object):
         print(c_trg)
         print(x_real.shape)
         with torch.no_grad():
+            x_real= x_real.to(self.device)
+            c_trg= c_trg.to(self.device)
             image_fake = self.G(x_real, c_trg)
             image_fake = self.denorm(image_fake.data.cpu())
 

@@ -148,3 +148,6 @@ image/
 image_temp/
 image_have_tag/
 *.json
+
+stargan/*
+stargan_celeba_128/*

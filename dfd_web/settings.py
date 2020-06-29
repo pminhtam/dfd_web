@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'detect_df',
-    'train_df'
+    'train_df',
+    'make_df'
 ]
 
 MIDDLEWARE = [

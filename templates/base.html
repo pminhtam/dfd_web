@@ -31,6 +31,18 @@
                 transform: rotate(360deg);
             }
         }
+        {#.modal#}
+        {#{#}
+        {#position: fixed;#}
+        {#left: 20%;#}
+        {#}#}
+        .modal {
+    height: auto;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+}
     </style>
 </head>
 
@@ -50,26 +62,47 @@
         <div class="loader " style="margin: auto;"></div>
     </div>
  <!-- Dialog  -->
-<div class="ui basic modal">
-    <div class="ui icon header">
-        Result of image
+{#<div class="ui basic modal" {% if hidden %} style="visibility:  hidden" {% endif %} >#}
+<div class="ui basic modal" style="visibility:  visible"  >
+
+    <h1>{{ hidden }}</h1>
+    <div class="content">
+        <h1>Result of image</h1>
     </div>
+    <img src="{{image}}" style="max-width: 100%;max-height: 500px;display: block;margin: 0 auto;top: auto;left: auto;bottom: auto;right: auto;object-fit: cover"/>
+    <br>
+    <h4>{{ result }}</h4>
     <div class="actions">
-        <div class="ui ok inverted button">
+        <div class="ui green ok inverted button">
             <i class="checkmark icon"></i>
             Ok
         </div>
     </div>
 </div>
+
+
+{#    <div class="ui basic modal">#}
+{#  <div class="ui icon header">#}
+{#    <i class="archive icon"></i>#}
+{#    Archive Old Messages#}
+{#  </div>#}
+{#  <div class="content">#}
+{#    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>#}
+{#  </div>#}
+{#  <div class="actions">#}
+{#    <div class="ui red basic cancel inverted button">#}
+{#      <i class="remove icon"></i>#}
+{#      No#}
+{#    </div>#}
+{#    <div class="ui green ok inverted button">#}
+{#      <i class="checkmark icon"></i>#}
+{#      Yes#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
 {#</div>#}
 </body>
 
-
-{#<script src="{% static 'dash_files/js/jquery.min.js' %}" ></script>#}
-{#<script src="{% static 'dash_files/js/jquery-3.3.1.min.js' %}"></script>#}
-{#<script src="{% static 'dash_files/js/jquery-3.3.1.min.js' %}"#}
-{#        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="#}
-{#        crossorigin="anonymous"></script>#}
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -77,7 +110,13 @@
 <script src="{% static 'dash_files/js/semantic.min.js' %}"></script>
 <script type="text/javascript">
     {#$('#loading').modal('hide');#}
-    $('.ui.basic.modal').modal('show');
+    {#$('.ui.basic.modal').modal('show');#}
+    var a = "{{show}}";
+    if (a=="True"){
+        $('.ui.modal').modal('show');
+    }
+
+    {#console.log(a);#}
     $('.upload').click(function(){
         $('#loading').modal('show');
 

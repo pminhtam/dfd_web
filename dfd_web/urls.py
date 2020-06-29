@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('detect/', include('detect_df.url')),
     path('', include('detect_df.url')),
-    path('train', include('train_df.url')),
+    path('make', include('make_df.url')),
 
 ]

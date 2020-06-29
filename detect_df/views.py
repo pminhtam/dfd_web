@@ -6,23 +6,19 @@ import base64
 import json
 # Create your views here.
 import matplotlib.pyplot as plt
-from detect_df.utils import detect_cnn
+from detect_df.utils import detect_cnn,draw_label
 from PIL import Image
 from io import BytesIO
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
-def draw_label(image, point, label, font=cv2.FONT_HERSHEY_SIMPLEX, font_scale=4, thickness=5):
-    size = cv2.getTextSize(label, font, font_scale, thickness)[0]
-    x, y = point
-    cv2.rectangle(image, (x, y - size[1]), (x + size[0], y), (255, 0, 0), cv2.FILLED)
-    cv2.putText(image, label, point, font, font_scale, (255, 255, 255), thickness)
+
 def detect_df(request):
     if request.method == "POST":
         try:
             img = request.FILES['image'].read()
         except:
-            return render(request, 'detect_df.html')
+            return render(request, 'Upload2.html')
         bytes = bytearray(img)
         # numpyarray = np.asarray(bytes, dtype=np.uint8)
         # print("numpyarray " ,numpyarray)
@@ -33,11 +29,16 @@ def detect_df(request):
         image_arr = np.asarray(bytes, dtype=np.uint8)
         bgrImage = cv2.cvtColor(cv2.imdecode(image_arr, cv2.IMREAD_COLOR),cv2.COLOR_RGB2BGR)
         position, fake = detect_cnn(bgrImage)
+        if position == None and fake == None:
+            image = 'data:image/jpg;base64,' + base64.b64encode(bytes).decode('utf-8')
+            return render(request, 'Upload2.html', {"image": image, "result": position, "show": True})
         for i in range(len(position)):
-            cv2.rectangle(bgrImage, (int(position[i][0]), int(position[i][1])), (int(position[i][2]), int(position[i][3])), (0, 255, 0), 2)
+            color = (0, 255, 0)
+            print(color)
+            cv2.rectangle(bgrImage, (int(position[i][0]), int(position[i][1])), (int(position[i][2]), int(position[i][3])), color, 2)
         # for i in fake:
             label = "{:.3f}, {}".format(float(fake[i]), "Fake" if fake[i] >0.5 else "Real")
-            draw_label(bgrImage, (int(position[i][0]), int(position[i][1])), label)
+            draw_label(bgrImage, (int(position[i][0]), int(position[i][1])), label,fake=fake[i])
 
         bgrImage = Image.fromarray(bgrImage, 'RGB')
         data = BytesIO()
@@ -50,9 +51,9 @@ def detect_df(request):
         # plt.imshow(bgrImage)
         # plt.show()
         # print(bgrImage)
-        return render(request, 'Upload2.html', {"image":image,"result":position})
+        return render(request, 'Upload2.html', {"image":image,"result":position,"show":True})
         # return render(request, 'pages/detect_df.html'),{"image":image}
-    return render(request, 'Upload2.html',{"fave_img":False})
+    return render(request, 'Upload2.html',{"show":False})
 
 def setting_detect(request):
     # Setting config to detect

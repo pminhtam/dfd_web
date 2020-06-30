@@ -22,7 +22,7 @@ config.dataset = 'CelebA'
 config.g_conv_dim = 64
 config.g_lr = 0.0001
 config.g_repeat_num = 6
-config.image_size = 128
+config.image_size = 256
 config.lambda_cls = 1
 config.lambda_gp = 10
 config.lambda_rec = 10
@@ -30,7 +30,7 @@ config.log_dir = 'stargan/logs'
 config.log_step = 10
 config.lr_update_step = 1000
 config.mode = 'test'
-config.model_save_dir = 'stargan_celeba_128/models'
+config.model_save_dir = 'stargan_celeba_256/models'
 config.model_save_step = 10000
 config.n_critic = 5
 config.num_iters = 200000
@@ -56,7 +56,7 @@ def str2bool(v):
 
 def adj_image(image,image_size):
     # For fast training.
-    image_size = 128
+    image_size = 256
     h_ori, w_ori,_ = image.shape
     image = Image.fromarray(np.uint8(image))
     # image = image.resize((image_size, image_size), Image.ANTIALIAS)

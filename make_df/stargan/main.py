@@ -58,7 +58,8 @@ def adj_image(image,image_size):
     # For fast training.
     h_ori, w_ori,_ = image.shape
     image = Image.fromarray(np.uint8(image))
-    image = image.resize((image_size, image_size), Image.ANTIALIAS)
+    # image = image.resize((image_size, image_size), Image.ANTIALIAS)
+    image = image.resize((128, 128), Image.ANTIALIAS)
     result = solver.test_one(image,image_size,w_ori,h_ori)
     image_df =np.array(result)
     # print(image_df.shape)

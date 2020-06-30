@@ -199,8 +199,8 @@ class Solver(object):
         x_real = transform(image)
         x_real = x_real.unsqueeze(0)
         c_trg = torch.tensor([[0.,1.,0.,0.,0.]])
-        print(c_trg)
-        print(x_real.shape)
+        # print(c_trg)
+        # print(x_real.shape)
         with torch.no_grad():
             x_real= x_real.to(self.device)
             c_trg= c_trg.to(self.device)

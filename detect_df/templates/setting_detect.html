@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+	Home | Facebook tagged image Crawler
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid d-flex justify-content-center">
+        <h1>Facebook tagged image Crawler</h1>
+    </div>
+    <div class="form-group shadow-textarea d-flex justify-content-center">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_ip_size">Size</label>
+            <input id="id_ip_size" type="text" name="size" > <br>
+            <label for="id_ip_model">Last name:</label>
+            <input type="text" id="id_ip_model" name="model"><br><br>
+            <div class="d-flex justify-content-center"><input type="submit" class="btn btn-primary btn-lg" value="Submit" /></div>
+        </form>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>Size : {{ size }} </h3> <br>
+        <h3>Model : {{ model }} </h3>
+    </div>
+
+{% endblock %}

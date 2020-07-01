@@ -7,26 +7,18 @@ import torchvision.transforms as transforms
 import cv2
 import matplotlib.pyplot as plt
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-<<<<<<< HEAD
 import traceback
-=======
 
->>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d
 detector = MTCNN(device=device)
 margin = 0.2
 # model = xception()
 # model.load_state_dict(torch.load("../../model/xception/model_pytorch_4.pt",map_location=torch.device('cpu') ))
 # model.eval()
 model = EfficientDual()
-<<<<<<< HEAD
 model.load_state_dict(torch.load("../dfd_benchmark/efficientdual_128_df_inthewild_checkpoint/model_dualpytorch3_1.pt"))
 model.eval()
 model.to(device)
-=======
-model.load_state_dict(torch.load("../../model/model_dualpytorch3_1.pt", map_location=torch.device('cpu')))
-model.eval()
-# model.to(device)
->>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d
+
 
 def get_model(checkpoint):
     global model

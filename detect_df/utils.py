@@ -7,16 +7,26 @@ import torchvision.transforms as transforms
 import cv2
 import matplotlib.pyplot as plt
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
+<<<<<<< HEAD
 import traceback
+=======
+
+>>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d
 detector = MTCNN(device=device)
 margin = 0.2
 # model = xception()
 # model.load_state_dict(torch.load("../../model/xception/model_pytorch_4.pt",map_location=torch.device('cpu') ))
 # model.eval()
 model = EfficientDual()
+<<<<<<< HEAD
 model.load_state_dict(torch.load("../dfd_benchmark/efficientdual_128_df_inthewild_checkpoint/model_dualpytorch3_1.pt"))
 model.eval()
 model.to(device)
+=======
+model.load_state_dict(torch.load("../../model/model_dualpytorch3_1.pt", map_location=torch.device('cpu')))
+model.eval()
+# model.to(device)
+>>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d
 
 def get_model(checkpoint):
     global model
@@ -100,8 +110,8 @@ def detect_cnn(image):
             position.append(face_position)
             fake.append(ressult)
     except Exception as e:
-        traceback.print_tb(e.__traceback__)
         print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        traceback.print_tb(e.__traceback__)
         return None,None
     return position,fake
 # SIZE = [128,256,512]
@@ -142,4 +152,8 @@ def crop_image_square(image):
 if __name__ == "__main__":
     image = cv2.cvtColor(cv2.imread("F:/Anh/[IMG] KSTN_CNTT/20161213_120030.jpg"),cv2.COLOR_RGB2BGR)
     # print(image)
+<<<<<<< HEAD
     crop_image_square(image)
+=======
+    crop_image_square(image)
+>>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d

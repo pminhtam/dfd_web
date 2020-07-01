@@ -144,8 +144,4 @@ def crop_image_square(image):
 if __name__ == "__main__":
     image = cv2.cvtColor(cv2.imread("F:/Anh/[IMG] KSTN_CNTT/20161213_120030.jpg"),cv2.COLOR_RGB2BGR)
     # print(image)
-<<<<<<< HEAD
     crop_image_square(image)
-=======
-    crop_image_square(image)
->>>>>>> 01ea3ca05c9bb2cda84ccd89c2b207940625ff0d
